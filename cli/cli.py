@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # cli/cli.py
 import click
-from manager import create_post, publish_post, search_posts, update_post_tags, update_post_category, upload_media, update_frontmatter, manage_revisions
+from .manager import create_post, publish_post, search_posts, update_post_tags, update_post_category, upload_media, update_frontmatter, manage_revisions
 
 @click.group()
 def cli():

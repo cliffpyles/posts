@@ -9,6 +9,9 @@ click = "*"
 pyyaml = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-click = "*"
+pytest-mock = "*"
 
 [requires]
 python_version = "3.12"

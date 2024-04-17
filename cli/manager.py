@@ -2,7 +2,7 @@
 import os
 import yaml
 import datetime
-from utils import generate_slug, write_file, read_file, upload_to_s3
+from .utils import generate_slug, write_file, read_file, upload_to_s3, update_frontmatter_field, find_post_by_slug
 
 def create_post(title, slug, category):
     slug = generate_slug(slug)
@@ -15,7 +15,7 @@ def create_post(title, slug, category):
         'category': category,
         'published': False
     }
-    content = f"---\n{yaml.dump(frontmatter)}---\n\n# {title}\nWrite your content here..."
+    content = f"---\n{yaml.safe_dump(frontmatter, sort_keys=False)}---\n\n# {title}\nWrite your content here..."
     write_file(os.path.join('content', filename), content)
 
 def publish_post(slug):
@@ -52,4 +52,8 @@ def update_frontmatter(slug, frontmatter_updates):
 
 def manage_revisions(slug):
     # Implementation of revision management logic here.
+    pass
+
+def upload_media_for_post(content):
+    # Extract media file paths from the content and upload them to S3
     pass
